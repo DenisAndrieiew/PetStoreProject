@@ -19,7 +19,9 @@ public enum PostUserCommands {
             return true;
         }
     }),
-    CREATE_USER(new CreateUser());
+    CREATE_USER(new CreateUser()),
+    CREATE_WITH_LIST(new CreateWithList()),
+    CREATE_WITH_ARRAY(new CreateWithArray());
     private Command command;
 
     private PostUserCommands(Command command) {

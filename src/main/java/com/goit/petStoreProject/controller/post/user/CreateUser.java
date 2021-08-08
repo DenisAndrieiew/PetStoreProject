@@ -14,14 +14,11 @@ import java.net.http.HttpResponse;
 
 public class CreateUser implements Command {
     private CommanderUtils utils = new CommanderUtils();
-    private static final String SUFFIX = "user/";
-    private static final String LIST_APPENDIX="";
-    private static final String ARRAY_APPENDIX="";
 
     @Override
     public boolean execute() {
         User user = User.create(utils.getView());
-        Utils.post(String.format("%s%s", Utils.URL, SUFFIX), user, utils.getView());
+        Utils.post(String.format("%s%s", Utils.URL, Utils.USER_SUFFIX), user, utils.getView());
         return utils.isContinue();
     }
 

@@ -11,7 +11,7 @@ public class DeleteOrder implements Command {
 
     @Override
     public boolean execute() {
-        utils.getView().write(commandName() + " " + commandDescription());
+        utils.getView().write(commandDescription());
         utils.getView().write("Please, input integer id for order");
         int id = Integer.parseInt(utils.getView().read());
         Utils.delete(String.format
