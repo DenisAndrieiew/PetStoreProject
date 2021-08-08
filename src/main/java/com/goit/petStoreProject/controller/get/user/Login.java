@@ -2,11 +2,14 @@ package com.goit.petStoreProject.controller.get.user;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
+import com.goit.petStoreProject.model.Data.ApiResponse;
 import com.goit.petStoreProject.model.Data.User;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -23,22 +26,26 @@ public class Login implements Command {
         utils.getView().write("enter password");
         String password = utils.getView().read();
         String appendix = String.format("login?username=%s&password=%s",username,password);
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format
-                ("%s%s%s", Utils.URL, Utils.USER_SUFFIX, appendix)))
-                .GET().build();
+        Type type = new TypeToken<ApiResponse>(){}.getType();
+        Utils.get(String.format
+                ("%s%s%s", Utils.URL, Utils.USER_SUFFIX, appendix), type, utils.getView());
 
-        HttpResponse response;
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            int httpCode = response.statusCode();
-            utils.getView().write(String.valueOf(httpCode));
-            utils.getView().write(response.body().toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        HttpClient client = HttpClient.newHttpClient();
+//        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format
+//                ("%s%s%s", Utils.URL, Utils.USER_SUFFIX, appendix)))
+//                .GET().build();
+//
+//        HttpResponse response;
+//        try {
+//            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+//            int httpCode = response.statusCode();
+//            utils.getView().write(String.valueOf(httpCode));
+//            utils.getView().write(response.body().toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return utils.isContinue();
     }
 

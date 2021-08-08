@@ -5,12 +5,15 @@ import com.goit.petStoreProject.controller.CommanderUtils;
 import com.goit.petStoreProject.model.Data.Pet;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 public class PetById implements Command {
     private CommanderUtils utils = new CommanderUtils();
@@ -22,27 +25,8 @@ public class PetById implements Command {
         utils.getView().write(commandName() + " " + commandDescription());
         utils.getView().write("Please, input integer id for pet");
         int id = Integer.valueOf(utils.getView().read());
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format("%s%s%d", Utils.URL, SUFFIX, id)))
-                .GET().build();
-        Gson gson = new Gson();
-
-        HttpResponse response = null;
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            int httpCode = response.statusCode();
-            if (httpCode == 200) {
-                Pet pet = gson.fromJson(String.valueOf(response.body()), Pet.class);
-                utils.getView().write(pet.toString());
-
-            } else {
-                utils.getView().write("Oops, something gone wrong. Http code " + httpCode);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Type type = new TypeToken<Pet>(){}.getType();
+        Utils.get(String.format("%s%s%d", Utils.URL, SUFFIX, id), type, utils.getView());
         return utils.isContinue();
     }
 
