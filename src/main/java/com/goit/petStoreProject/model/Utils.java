@@ -94,5 +94,21 @@ public class Utils {
             e.printStackTrace();
         }
     }
+    public static void put(String uri, Object object, View view) {
+        HttpClient client = HttpClient.newHttpClient();
+        Gson gson = new Gson();
+        HttpRequest request = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .uri(URI.create(uri))
+                .PUT(HttpRequest.BodyPublishers.ofString(gson.toJson(object)))
+                .build();
+        HttpResponse response;
+        try {
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            view.write(String.valueOf(response.statusCode()));
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
