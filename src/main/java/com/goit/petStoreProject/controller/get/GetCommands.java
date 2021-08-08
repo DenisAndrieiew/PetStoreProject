@@ -2,6 +2,7 @@ package com.goit.petStoreProject.controller.get;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.Help;
+import com.goit.petStoreProject.controller.get.store.Inventory;
 import com.goit.petStoreProject.view.Console;
 import com.goit.petStoreProject.view.View;
 

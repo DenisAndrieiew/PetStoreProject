@@ -1,8 +1,8 @@
-package com.goit.petStoreProject.controller.put;
+package com.goit.petStoreProject.controller.post;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
-import com.goit.petStoreProject.model.Data.Pet;
+import com.goit.petStoreProject.model.Data.Order;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.Gson;
 
@@ -12,41 +12,42 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class PutPet implements Command {
+public class PostOrder implements Command {
     private CommanderUtils utils = new CommanderUtils();
+    private final  String APPENDIX = "order";
 
     @Override
     public boolean execute() {
-        Pet pet = Pet.create(utils.getView());
+        Order order = Order.create(utils.getView());
         HttpClient client = HttpClient.newHttpClient();
         Gson gson = new Gson();
         HttpRequest request = HttpRequest.newBuilder()
                 .header("Content-Type", "application/json")
-                .uri(URI.create(String.format("%s%s", Utils.URL, Utils.PET_SUFFIX)))
-                .PUT(HttpRequest.BodyPublishers.ofString(gson.toJson(pet)))
+                .uri(URI.create(String.format("%s%s%s", Utils.URL, Utils.STORE_SUFFIX, APPENDIX)))
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(order)))
                 .build();
         HttpResponse response = null;
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
             utils.getView().write(String.valueOf(response.statusCode()));
-        } catch (IOException e) {
-            utils.getView().write(String.valueOf(response.statusCode()));
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             utils.getView().write(String.valueOf(response.statusCode()));
             e.printStackTrace();
         }
         System.out.println(response.body());
+
+
+
         return utils.isContinue();
     }
 
     @Override
     public String commandName() {
-        return "pet";
+        return "order";
     }
 
     @Override
     public String commandDescription() {
-        return "update existing pet";
+        return "add new order";
     }
 }

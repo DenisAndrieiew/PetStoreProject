@@ -10,16 +10,19 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class DeletePet implements Command {
+public class DeleteOrder implements Command {
     private CommanderUtils utils = new CommanderUtils();
+    private final  String APPENDIX = "order/";
+
 
     @Override
     public boolean execute() {
-        utils.getView().write(commandDescription());
-        utils.getView().write("Please, input integer id for pet");
+        utils.getView().write(commandName() + " " + commandDescription());
+        utils.getView().write("Please, input integer id for order");
         int id = Integer.parseInt(utils.getView().read());
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format("%s%s%d", Utils.URL, Utils.PET_SUFFIX, id)))
+        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format
+                ("%s%s%s%d", Utils.URL, Utils.STORE_SUFFIX , APPENDIX, id)))
                 .DELETE().build();
 
         HttpResponse response = null;
@@ -40,11 +43,11 @@ public class DeletePet implements Command {
 
     @Override
     public String commandName() {
-        return "pet";
+        return "order";
     }
 
     @Override
     public String commandDescription() {
-        return "delete pet by id";
+        return "delete order by id";
     }
 }

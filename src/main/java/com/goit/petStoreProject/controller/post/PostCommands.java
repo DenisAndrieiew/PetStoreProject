@@ -21,6 +21,7 @@ public enum PostCommands {
     }),
     POST_USER(new PostUser()),
     POST_PET(new PostPet()),
+    POST_ORDER(new PostOrder())
 
     ;
     private Command command;

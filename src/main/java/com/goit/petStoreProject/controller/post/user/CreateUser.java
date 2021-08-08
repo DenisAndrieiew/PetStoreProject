@@ -3,7 +3,6 @@ package com.goit.petStoreProject.controller.post.user;
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
 import com.goit.petStoreProject.model.Data.User;
-import com.goit.petStoreProject.model.UserService;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.Gson;
 
@@ -21,7 +20,7 @@ public class CreateUser implements Command {
 
     @Override
     public boolean execute() {
-        User user = UserService.create(utils.getView());
+        User user = User.create(utils.getView());
         HttpClient client = HttpClient.newHttpClient();
         Gson gson = new Gson();
         HttpRequest request = HttpRequest.newBuilder()

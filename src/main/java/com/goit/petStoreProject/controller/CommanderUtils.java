@@ -55,7 +55,7 @@ public class CommanderUtils {
         this.commandList = commandList;
     }
     public boolean isContinue(){
-        view.write("Are you wont to continue? [y/n]");
+        view.write("Are you want to continue? [y/n]");
         while (true){
             String answer = view.read().toLowerCase();
             switch (answer){

@@ -1,15 +1,21 @@
 package com.goit.petStoreProject.controller.get;
 
 import com.goit.petStoreProject.controller.Command;
-import com.goit.petStoreProject.view.Console;
-import com.goit.petStoreProject.view.View;
+import com.goit.petStoreProject.controller.CommanderUtils;
+import com.goit.petStoreProject.controller.get.pet.GetPetCommands;
+import com.goit.petStoreProject.controller.get.store.GetStoreCommands;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class GetStore implements Command {
-    View view = new Console();
+    private CommanderUtils utils = new CommanderUtils();
 
     @Override
     public boolean execute() {
-        view.write(commandName() + " " + commandDescription());
+        utils.run(commandDescription(),
+                Arrays.stream(GetStoreCommands.values()).map(GetStoreCommands::getCommand)
+                        .collect(Collectors.toList()));
         return false;
     }
 
@@ -20,6 +26,6 @@ public class GetStore implements Command {
 
     @Override
     public String commandDescription() {
-        return "get store info";
+        return "to control inventory & orders";
     }
 }

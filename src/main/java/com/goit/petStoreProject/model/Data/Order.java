@@ -1,5 +1,7 @@
 package com.goit.petStoreProject.model.Data;
 
+import com.goit.petStoreProject.view.View;
+
 public class Order {
 
     long id;
@@ -16,6 +18,32 @@ public class Order {
         this.shipDate = shipDate;
         this.status = status;
         this.complete = complete;
+    }
+
+    public Order() {
+    }
+
+    public static Order create(View view) {
+        Order order = new Order();
+        view.write("input integer id for new order");
+        long id = Long.parseLong(view.read());
+        view.write("input pet id");
+        long petId = Long.parseLong(view.read());
+        view.write("input quantity");
+        int quantity = Integer.parseInt(view.read());
+        view.write("input ship date");
+        String shipDate = view.read();
+        view.write("input status");
+        String status = view.read();
+        view.write("is order complete? (true/false)");
+        boolean isComplite = Boolean.parseBoolean(view.read());
+        order.setId(id);
+        order.setPetId(petId);
+        order.setQuantity(quantity);
+        order.setShipDate(shipDate);
+        order.setStatus(status);
+        order.setComplete(isComplite);
+        return order;
     }
 
     public long getId() {
@@ -64,5 +92,17 @@ public class Order {
 
     public void setComplete(boolean complete) {
         this.complete = complete;
+    }
+
+    @Override
+    public String toString() {
+        return "{\n\t" +
+                "id=" + id +
+                ",\n\t petId=" + petId +
+                ",\t quantity=" + quantity +
+                ",\n\t shipDate='" + shipDate + '\'' +
+                ",\n\t status='" + status + '\'' +
+                ",\t complete=" + complete +
+                "\n}";
     }
 }

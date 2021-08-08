@@ -3,7 +3,6 @@ package com.goit.petStoreProject.controller.post.pet;
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
 import com.goit.petStoreProject.model.Data.Pet;
-import com.goit.petStoreProject.model.PetService;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.Gson;
 
@@ -18,7 +17,7 @@ public class CreatePet implements Command {
 
     @Override
     public boolean execute() {
-        Pet pet = PetService.create(utils.getView());
+        Pet pet = Pet.create(utils.getView());
         HttpClient client = HttpClient.newHttpClient();
         Gson gson = new Gson();
         HttpRequest request = HttpRequest.newBuilder()
