@@ -1,4 +1,4 @@
-package com.goit.petStoreProject.controller.post;
+package com.goit.petStoreProject.controller.post.pet;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.Help;
@@ -7,7 +7,7 @@ import com.goit.petStoreProject.view.View;
 
 import java.util.Arrays;
 
-public enum PostCommands {
+public enum PostPetCommands {
     HELP(new Help() {
         @Override
         public boolean execute() {
@@ -19,13 +19,11 @@ public enum PostCommands {
             return true;
         }
     }),
-    POST_USER(new PostUser()),
-    POST_PET(new PostPet()),
-
+    CREATE_PET(new CreatePet()),
     ;
     private Command command;
 
-    private PostCommands(Command command) {
+    private PostPetCommands(Command command) {
         this.command = command;
     }
 

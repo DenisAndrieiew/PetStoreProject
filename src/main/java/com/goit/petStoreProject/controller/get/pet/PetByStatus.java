@@ -40,7 +40,8 @@ public class PetByStatus implements Command {
                 return true;
             } else {
                 for (PetStatus status : statusList) {
-                    if (inputStatus != status.name().toLowerCase()) {
+                    if (inputStatus.equals(status.name().toLowerCase())) {
+                        isNotExit=false;
                         break;
                     }
                 }
@@ -73,7 +74,7 @@ public class PetByStatus implements Command {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return false;
+        return utils.isContinue();
     }
 
     @Override

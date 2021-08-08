@@ -8,7 +8,6 @@ import java.util.List;
 public class CommanderUtils {
     private View view;
     private List<Command> commandList;
-    private int level = 0;
 
     public CommanderUtils() {
         view = new Console();
@@ -54,5 +53,15 @@ public class CommanderUtils {
 
     public void setCommandList(List<Command> commandList) {
         this.commandList = commandList;
+    }
+    public boolean isContinue(){
+        view.write("Are you wont to continue? [y/n]");
+        while (true){
+            String answer = view.read().toLowerCase();
+            switch (answer){
+                case "y":return true;
+                case "n":return false;
+            }
+        }
     }
 }

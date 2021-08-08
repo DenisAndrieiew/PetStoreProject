@@ -6,17 +6,20 @@ public class Pet {
     long id;
     Category category;
     String name;
-    String PhotoUrl;
+    String[] photoUrl;
     Tag[] tags;
     String status;
 
-    public Pet(long id, Category category, String name, String photoUrl, Tag[] tags, String status) {
+    public Pet(long id, Category category, String name, String[] photoUrl, Tag[] tags, String status) {
         this.id = id;
         this.category = category;
         this.name = name;
-        PhotoUrl = photoUrl;
+        this.photoUrl = photoUrl;
         this.tags = tags;
         this.status = status;
+    }
+
+    public Pet() {
     }
 
     public long getId() {
@@ -43,12 +46,12 @@ public class Pet {
         this.name = name;
     }
 
-    public String getPhotoUrl() {
-        return PhotoUrl;
+    public String[] getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setPhotoUrl(String photoUrl) {
-        PhotoUrl = photoUrl;
+    public void setPhotoUrl(String[] photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public Tag[] getTags() {
@@ -72,7 +75,7 @@ public class Pet {
         return "id=" + id +
                 ",\n \t" + category +
                 ",\n \tname=\t'" + name + '\'' +
-                ",\n \tPhotoUrl='" + PhotoUrl + '\'' +
+                ",\n \tPhotoUrl='" + photoUrl + '\'' +
                 ",\n \n tags=" + Arrays.toString(tags) +
                 ",\n status='" + status + '\'' +
                 "\n";

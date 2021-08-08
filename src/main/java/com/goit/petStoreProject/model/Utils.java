@@ -6,9 +6,10 @@ import java.net.http.HttpClient;
 
 public class Utils {
     public static final String URL = "https://petstore.swagger.io/v2/";
+    public static final String USER_SUFFIX="user/";
+    public static final String PET_SUFFIX = "pet/";
 
-    protected static HttpClient httpClient = HttpClient.newBuilder().build();
-    protected static Gson gson = new Gson();
+
 
 
 }
