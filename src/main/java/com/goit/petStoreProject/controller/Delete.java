@@ -1,14 +1,17 @@
 package com.goit.petStoreProject.controller;
 
-import com.goit.petStoreProject.view.Console;
-import com.goit.petStoreProject.view.View;
+
+import com.goit.petStoreProject.controller.delete.DeleteCommands;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Delete implements Command {
-    private View view = new Console();
-
+CommanderUtils utils = new CommanderUtils();
     @Override
     public boolean execute() {
-        view.write(commandName() + " " + commandDescription());
+        utils.run(commandDescription(),
+                Arrays.stream(DeleteCommands.values()).map(DeleteCommands::getCommand).collect(Collectors.toList()));
         return true;
     }
 

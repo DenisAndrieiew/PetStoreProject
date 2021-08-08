@@ -1,4 +1,4 @@
-package com.goit.petStoreProject.controller.put;
+package com.goit.petStoreProject.controller.delete;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.Help;
@@ -7,7 +7,7 @@ import com.goit.petStoreProject.view.View;
 
 import java.util.Arrays;
 
-public enum PutCommands {
+public enum DeleteCommands {
     HELP(new Help() {
         @Override
         public boolean execute() {
@@ -19,11 +19,10 @@ public enum PutCommands {
             return true;
         }
     }),
-    PUT_PET(new PutPet())
-    ;
-    private Command command;
+    DELETE_PET(new DeletePet());
+    private final Command command;
 
-    private PutCommands(Command command) {
+    DeleteCommands(Command command) {
         this.command = command;
     }
 

@@ -9,7 +9,7 @@ public class Post implements Command {
 private CommanderUtils utils = new CommanderUtils();
     @Override
     public boolean execute() {
-        utils.run(commandName() + " " + commandDescription(),
+        utils.run(commandDescription(),
                 Arrays.stream(PostCommands.values()).map(PostCommands::getCommand).collect(Collectors.toList()));
         return true;
     }

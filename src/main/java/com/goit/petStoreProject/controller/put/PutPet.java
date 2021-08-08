@@ -1,4 +1,4 @@
-package com.goit.petStoreProject.controller.post.pet;
+package com.goit.petStoreProject.controller.put;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
@@ -13,7 +13,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class CreatePet implements Command {
+public class PutPet implements Command {
     private CommanderUtils utils = new CommanderUtils();
 
     @Override
@@ -24,7 +24,7 @@ public class CreatePet implements Command {
         HttpRequest request = HttpRequest.newBuilder()
                 .header("Content-Type", "application/json")
                 .uri(URI.create(String.format("%s%s", Utils.URL, Utils.PET_SUFFIX)))
-                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(pet)))
+                .PUT(HttpRequest.BodyPublishers.ofString(gson.toJson(pet)))
                 .build();
         HttpResponse response = null;
         try {
@@ -43,11 +43,11 @@ public class CreatePet implements Command {
 
     @Override
     public String commandName() {
-        return "new";
+        return "pet";
     }
 
     @Override
     public String commandDescription() {
-        return "create new pet";
+        return "update existing pet";
     }
 }

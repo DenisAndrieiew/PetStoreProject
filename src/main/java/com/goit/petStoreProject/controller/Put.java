@@ -10,7 +10,7 @@ public class Put implements Command {
 
     @Override
     public boolean execute() {
-        utils.run(commandName() + " " + commandDescription(),
+        utils.run(commandDescription(),
                 Arrays.stream(PutCommands.values()).map(PutCommands::getCommand).collect(Collectors.toList()));
         return true;
     }

@@ -13,7 +13,7 @@ public class Get implements Command {
 
     @Override
     public boolean execute() {
-        utils.run(commandName() + " " + commandDescription(),
+        utils.run(commandDescription(),
                 Arrays.stream(GetCommands.values()).map(GetCommands::getCommand).collect(Collectors.toList()));
         return true;
     }
