@@ -21,26 +21,8 @@ public class CreateUser implements Command {
     @Override
     public boolean execute() {
         User user = User.create(utils.getView());
-        HttpClient client = HttpClient.newHttpClient();
-        Gson gson = new Gson();
-        HttpRequest request = HttpRequest.newBuilder()
-                .header("Content-Type", "application/json")
-                .uri(URI.create(String.format("%s%s", Utils.URL, SUFFIX)))
-                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(user)))
-                .build();
-        HttpResponse response = null;
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            utils.getView().write(String.valueOf(response.statusCode()));
-        } catch (IOException e) {
-            utils.getView().write(String.valueOf(response.statusCode()));
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            utils.getView().write(String.valueOf(response.statusCode()));
-            e.printStackTrace();
-        }
-        System.out.println(response.body());
-        return true;
+        Utils.post(String.format("%s%s", Utils.URL, SUFFIX), user, utils.getView());
+        return utils.isContinue();
     }
 
     @Override

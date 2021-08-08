@@ -2,12 +2,20 @@ package com.goit.petStoreProject.controller.get.pet;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
+import com.goit.petStoreProject.model.Data.ApiResponse;
 import com.goit.petStoreProject.model.Data.Pet;
 import com.goit.petStoreProject.model.Data.PetStatus;
 import com.goit.petStoreProject.model.Utils;
+import com.goit.petStoreProject.view.View;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -57,3 +65,4 @@ public class PetByStatus implements Command {
         return "find pets by status";
     }
 }
+
