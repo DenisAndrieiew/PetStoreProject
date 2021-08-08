@@ -1,14 +1,16 @@
 package com.goit.petStoreProject.controller;
 
-import com.goit.petStoreProject.view.Console;
-import com.goit.petStoreProject.view.View;
+import com.goit.petStoreProject.controller.post.PostCommands;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Post implements Command {
-    private View view = new Console();
-
+private CommanderUtils utils = new CommanderUtils();
     @Override
     public boolean execute() {
-        view.write(commandName() + " " + commandDescription());
+        utils.run(commandName() + " " + commandDescription(),
+                Arrays.stream(PostCommands.values()).map(PostCommands::getCommand).collect(Collectors.toList()));
         return true;
     }
 

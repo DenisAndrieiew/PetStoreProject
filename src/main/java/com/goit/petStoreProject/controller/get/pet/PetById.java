@@ -14,6 +14,8 @@ import java.net.http.HttpResponse;
 
 public class PetById implements Command {
     private CommanderUtils utils = new CommanderUtils();
+    private static final String SUFFIX = "pet/";
+
 
     @Override
     public boolean execute() {
@@ -21,7 +23,7 @@ public class PetById implements Command {
         utils.getView().write("Please, input integer id for pet");
         int id = Integer.valueOf(utils.getView().read());
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format("%s%s%d", Utils.URL, "pet/", id)))
+        HttpRequest request = HttpRequest.newBuilder(URI.create(String.format("%s%s%d", Utils.URL, SUFFIX, id)))
                 .GET().build();
         Gson gson = new Gson();
 

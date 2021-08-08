@@ -2,7 +2,7 @@ package com.goit.petStoreProject.controller.post;
 
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
-import com.goit.petStoreProject.controller.get.pet.GetPetCommands;
+import com.goit.petStoreProject.controller.post.user.PostUserCommands;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -13,9 +13,9 @@ public class PostUser implements Command {
     @Override
     public boolean execute() {
         utils.run(commandDescription(),
-                Arrays.stream(GetPetCommands.values()).map(GetPetCommands::getCommand)
+                Arrays.stream(PostUserCommands.values()).map(PostUserCommands::getCommand)
                         .collect(Collectors.toList()));
-        return false;
+        return true;
     }
 
     @Override
