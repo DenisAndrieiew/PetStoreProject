@@ -15,8 +15,7 @@ public class UpdatePetStatus implements Command {
         utils.getView().write("input new pet name");
         String name = utils.getView().read();
         String status = PetStatus.getStatus(utils.getView());
-        String body = String.format("name=%s&status=%s", name, status);
-        Utils.postFormData(String.format("%s%s%d", Utils.URL, Utils.PET_SUFFIX, id), body, utils.getView());
+        Utils.postFormData(String.format("%s%s%d", Utils.URL, Utils.PET_SUFFIX, id), name, status, utils.getView());
         return utils.isContinue();
     }
 
