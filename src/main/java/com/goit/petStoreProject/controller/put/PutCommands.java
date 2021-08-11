@@ -19,8 +19,7 @@ public enum PutCommands {
             return true;
         }
     }),
-    PUT_PET(new PutPet())
-    ;
+    PUT_PET(new PutPet());
     private Command command;
 
     private PutCommands(Command command) {

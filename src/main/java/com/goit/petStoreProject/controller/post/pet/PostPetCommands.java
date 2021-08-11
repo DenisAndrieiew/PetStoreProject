@@ -20,7 +20,8 @@ public enum PostPetCommands {
         }
     }),
     CREATE_PET(new CreatePet()),
-    ;
+    UPDATE_PET_STATUS(new UpdatePetStatus()),
+    POST_PET_IMAGE(new PostPetImage());
     private Command command;
 
     private PostPetCommands(Command command) {

@@ -10,13 +10,14 @@ import java.lang.reflect.Type;
 import java.net.http.HttpClient;
 
 public class Logout implements Command {
+    private final String LOGOUT = "logout";
     private CommanderUtils utils = new CommanderUtils();
-    private final String LOGOUT="logout";
 
     @Override
     public boolean execute() {
         utils.getView().write(commandName() + " " + commandDescription());
-        Type type = new TypeToken<ApiResponse>(){}.getType();
+        Type type = new TypeToken<ApiResponse>() {
+        }.getType();
         Utils.get(String.format
                 ("%s%s%s", Utils.URL, Utils.USER_SUFFIX, LOGOUT), type, utils.getView());
         HttpClient client = HttpClient.newHttpClient();

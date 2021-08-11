@@ -54,13 +54,16 @@ public class CommanderUtils {
     public void setCommandList(List<Command> commandList) {
         this.commandList = commandList;
     }
-    public boolean isContinue(){
+
+    public boolean isContinue() {
         view.write("Are you want to continue? [y/n]");
-        while (true){
+        while (true) {
             String answer = view.read().toLowerCase();
-            switch (answer){
-                case "y":return true;
-                case "n":return false;
+            switch (answer) {
+                case "y":
+                    return true;
+                case "n":
+                    return false;
             }
         }
     }

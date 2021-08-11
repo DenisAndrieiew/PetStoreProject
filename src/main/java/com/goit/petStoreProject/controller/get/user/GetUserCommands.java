@@ -20,8 +20,8 @@ public enum GetUserCommands {
         }
     }),
     BY_USERNAME(new ByUsername()),
-    LOGIN (new Login()),
-    LOGOUT (new Logout()) ;
+    LOGIN(new Login()),
+    LOGOUT(new Logout());
     private Command command;
 
     private GetUserCommands(Command command) {

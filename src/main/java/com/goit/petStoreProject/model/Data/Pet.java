@@ -43,28 +43,10 @@ public class Pet {
             photoUrls.add(url);
         }
         boolean isNotExit = true;
-        view.write("input status");
-        view.writeL("choose from:");
-
-        String inputStatus = null;
-        while (isNotExit) {
-            Arrays.stream(PetStatus.values()).forEach(status -> {
-                view.writeL('\t' + status.name().toLowerCase());
-            });
-            view.write("");
-            inputStatus = view.read().toLowerCase();
-            for (PetStatus status : PetStatus.values()) {
-                if (inputStatus.equals(status.name().toLowerCase())) {
-                    isNotExit = false;
-                    break;
-                }
-
-            }
-        }
-        isNotExit = true;
+        String inputStatus = PetStatus.getStatus(view);
         view.write("input Category:");
         view.write("input Category id");
-        long categoryId = Long.valueOf(view.read());
+        long categoryId = Long.parseLong(view.read());
         view.write("input category name");
         String categoryName = view.read();
         Category category = new Category(categoryId, categoryName);
@@ -78,7 +60,7 @@ public class Pet {
             }
             view.write("input tag name");
             String tagName = view.read();
-            Tag tag = new Tag(Long.valueOf(tagId), tagName);
+            Tag tag = new Tag(Long.parseLong(tagId), tagName);
             tagList.add(tag);
         }
         pet.setId(id);

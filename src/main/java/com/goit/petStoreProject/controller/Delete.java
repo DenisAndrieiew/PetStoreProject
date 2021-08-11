@@ -7,7 +7,8 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Delete implements Command {
-CommanderUtils utils = new CommanderUtils();
+    CommanderUtils utils = new CommanderUtils();
+
     @Override
     public boolean execute() {
         utils.run(commandDescription(),

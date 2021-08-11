@@ -4,6 +4,11 @@ public class Category {
     long id;
     String name;
 
+    public Category(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
@@ -20,14 +25,9 @@ public class Category {
         this.name = name;
     }
 
-    public Category(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     @Override
     public String toString() {
         return "[Category: id=" + id +
-                ",\t name='" + name + '\''+']';
+                ",\t name='" + name + '\'' + ']';
     }
 }

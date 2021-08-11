@@ -16,9 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory implements Command {
-    private CommanderUtils utils = new CommanderUtils();
     private final String APPENDIX = "inventory";
-
+    private CommanderUtils utils = new CommanderUtils();
 
     @Override
     public boolean execute() {

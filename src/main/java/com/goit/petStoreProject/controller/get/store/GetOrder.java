@@ -3,12 +3,10 @@ package com.goit.petStoreProject.controller.get.store;
 import com.goit.petStoreProject.controller.Command;
 import com.goit.petStoreProject.controller.CommanderUtils;
 import com.goit.petStoreProject.model.Data.Order;
-import com.goit.petStoreProject.model.Data.Pet;
 import com.goit.petStoreProject.model.Utils;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 public class GetOrder implements Command {
     private final String APPENDIX = "order/";

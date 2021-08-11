@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Post implements Command {
-private CommanderUtils utils = new CommanderUtils();
+    private CommanderUtils utils = new CommanderUtils();
+
     @Override
     public boolean execute() {
         utils.run(commandDescription(),
